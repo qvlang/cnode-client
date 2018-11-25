@@ -1,21 +1,5 @@
 # community
 
-## Project setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+使用vue全家桶开发cnode社区客户端。涉及技术vue vuex router 等。项目通过vue-cli搭建
 ```
