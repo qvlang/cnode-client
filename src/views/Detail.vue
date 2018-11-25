@@ -1,8 +1,8 @@
 <template>
-  <div class='home-wrap'>
+  <div class='detail-wrap'>
     <div class='main-content clearfix'>
       <div class='main-left'>
-        <home-topics></home-topics>
+        <main-detail></main-detail>
       </div>
       <div class='main-right'>
         <home-person></home-person>
@@ -11,18 +11,18 @@
   </div>
 </template>
 <script>
-import HomeTopics from '../components/home/HomeTopics'
+import MainDetail from '../components/detail/MainDetail'
 import HomePerson from '../components/home/HomePerson'
 export default {
   name: 'HomeMain',
   components: {
-    HomeTopics,
+    MainDetail,
     HomePerson
   }
 }
 </script>
 <style lang='stylus' scoped>
-  .home-wrap
+  .detail-wrap
     width: 100%
     position: absolute
     top: 50px
