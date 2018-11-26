@@ -38,7 +38,7 @@ export default {
           axios({
             url: 'http://localhost:3333/login',
             method: 'POST',
-            data: qs.stringify({accessToken: 'c454e036-daab-4f99-9287-ab6db673fb6d'}),
+            data: qs.stringify({accessToken: ''}),
             headers: {
               "Content-Type": "application/x-www-form-urlencoded"
             }
