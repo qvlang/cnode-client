@@ -9,13 +9,13 @@
         <input type="text" class='nav-input' />
       </div>
       <div class='nav-right'>
-        <ul>
+        <ul @click='handleClick'>
           <li class='title-list'
            v-for='(item, index) of title'
-           :key='index' 
-           @click='handleClick'
+           :key='index'
            >{{item}}
          </li>
+         <li class='title-list'>{{this.$store.state.personInfo.success? '退出':'登录'}}</li>
         </ul>
       </div>
     </div>
@@ -28,28 +28,17 @@ export default {
   name: 'HeaderNav',
   data () {
     return {
-      title: ['首页','未读消息','新手入门','API','关于','设置','登录']
+      title: ['首页','未读消息','新手入门','API','关于','设置']
     }
   },
   methods: {
+    //使用事件委托实现各个按钮点击功能
+    //判断是否取得登录用户信息 以此切换登录退出状态
     handleClick (e) {
       switch(e.target.innerText){
-        case '登录':
-          axios({
-            url: 'http://localhost:3333/login',
-            method: 'POST',
-            data: qs.stringify({accessToken: ''}),
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            }
-          })
-          .then(res=>{
-            console.log(res.data)
-          })
-          .catch(err=>{
-            console.log(err.message);
-          })
-          break;
+        case '首页':
+          this.$router.push('/');
+            break;
         case '关于':
           axios.defaults.withCredentials=true;
           axios({
@@ -63,12 +52,17 @@ export default {
           .then(res=>{
             console.log(res.data)
           })
-          .catch(err=>{
-            console.log(err.message);
+          .catch( err =>{
+            throw new Error("err");
           })
+            break;
+        case '登录':
+          this.$router.push('/login');
+            break;
+        case '退出':
+          this.$store.commit('emptyPerson');
           break;
         default:
-          break;
       }
     }
   }

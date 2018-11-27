@@ -6,11 +6,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    topicList: []
+    topicList: [],
+    personInfo: {}
   },
   mutations: {
     updateTopics (state, data) {
       state.topicList = data.data
+    },
+    updatePerson (state, data) {
+      state.personInfo = data
+    },
+    emptyPerson (state) {
+      state.personInfo = {}
     }
   },
   actions: {
