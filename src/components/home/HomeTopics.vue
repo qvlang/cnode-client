@@ -12,7 +12,7 @@
       <ul>
         <li 
           class='topic-list clearfix'
-          v-for='item of topicList'
+          v-for='(item, index) of topicList'
           :key='item.id'
         >
           <div class='list-left'>
@@ -21,7 +21,7 @@
               :src='item.author.avatar_url'
               alt="头像">
             <span class='comment-rate'>{{item.reply_count}}/{{item.visit_count}}</span>
-            <span class='go-top'>置顶</span>
+            <span class='go-top' v-if='index < 3'>置顶</span>
             <router-link :to='{ path: "detail", query: {id: item.id}}'>
               <p class='topic-title'>{{item.title}}</p>
             </router-link>
@@ -64,7 +64,7 @@ export default {
     box-sizing: border-box
     .title-all
       width: 28px
-      background-color: #80bd01
+      background-color: $commonColor
       display: inline-block
       color: #fff
       padding: 3px 4px
@@ -76,7 +76,7 @@ export default {
       vertical-align: center
       .title-list
         margin: 0 10px
-        color: #80bd01
+        color: $commonColor
         vertical-align: center
         display: inline-block
   .topic-list
@@ -103,7 +103,7 @@ export default {
           vertical-align: middle
         .go-top
           padding: 4px 4px
-          background: #80bd01
+          background: $commonColor
           border-radius: 3px
           color: #fff
           font-size: 12px

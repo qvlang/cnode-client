@@ -23,12 +23,13 @@
 </template>
 <script>
 import axios from 'axios';
-import qs from 'query-string'
+import qs from 'query-string';
+import { mapState } from 'vuex'
 export default {
   name: 'HeaderNav',
   data () {
     return {
-      title: ['首页','未读消息','新手入门','API','关于','设置']
+      title: ['首页','新手入门','API','关于','设置']
     }
   },
   methods: {
@@ -39,6 +40,9 @@ export default {
         case '首页':
           this.$router.push('/');
             break;
+        case '未读消息':
+          this.$router.push('/message');
+          break;
         case '关于':
           axios.defaults.withCredentials=true;
           axios({
@@ -52,8 +56,8 @@ export default {
           .then(res=>{
             console.log(res.data)
           })
-          .catch( err =>{
-            throw new Error("err");
+          .catch(err=>{
+            throw new Error(err);
           })
             break;
         case '登录':
@@ -63,6 +67,17 @@ export default {
           this.$store.commit('emptyPerson');
           break;
         default:
+      }
+    }
+  },
+  computed: mapState(['personInfo']),
+  // 监听登录返回的信息判断是否登录 控制标题是否显示
+  watch: {
+    personInfo(newValue, oldValue) {
+      if(newValue.success){
+        this.title.splice(1,0,'未读消息');
+      }else{
+        this.title.splice(1,1);
       }
     }
   }

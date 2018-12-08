@@ -22,7 +22,7 @@ export default new Vuex.Store({
   },
   actions: {
     getTopics (context) {
-      axios.get('https://cnodejs.org/api/v1/topics')
+      axios.get('http://localhost:3333/topics')
       .then((res) => {
         // eslint-disable-next-line
         context.commit('updateTopics', res.data)
