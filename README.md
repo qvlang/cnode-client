@@ -26,4 +26,4 @@ npm run serve
 ### 登录以后主界面
 !['登录后界面'](https://raw.githubusercontent.com/wiki/qvlang/cnode-client/loginafter.jpg)
 ### 详情页面
-!['详情界面'](https://raw.githubusercontent.com/wiki/qvlang/cnode-client/logdetailin.jpg)
+!['详情界面'](https://raw.githubusercontent.com/wiki/qvlang/cnode-client/detail.jpg)
